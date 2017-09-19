@@ -12,5 +12,14 @@ In order to use the program you will need the following:
 - Python 3 installed
 - <a href="https://github.com/ManiacalLabs/BiblioPixel">BiblioPixel</a> Installed (any any dependency it requires)
 
-## Getting Started
-The file <code>animateMessageBoard.py</code> is a sample script that executes the program. All animations, algorithms, character sets, and parsers can be subclassed to fit the needs of your setup.
+## Setup
+You can clone/download the project to any directory you want to keep the files. The file <code>animateMessageBoard.py</code> is a sample script that executes the program. You can follow this as a template for writing you're own implementation. All animations, algorithms, character sets, and parsers can be subclassed to fit the needs of your specific setup. For example if you are using an 8x48 message board, you will need to create a character set for that. For details on the whole project start <a href="http://www.thetylermckay.com/rpi/overview/">here</a>.
+
+## How It Works
+Here's the basic idea for writing a message to your board:
+- Create a custom animation class inheriting the <code>BaseAnim</code> class from BiblioPixel and override the <code>step()</code> function. OR use the <code>MessageBoardAnimation</code> class provided, which does this.
+- Customize the animation to accept the arguments you need.
+- Create a BiblioPixel driver for the LED model strip you have
+- Create the character set you will use and initialize the parser with the character set
+- Create the color algorithm you will use and initialize the message algorithm with the color algorithm
+- Initialize the custom animation and run
