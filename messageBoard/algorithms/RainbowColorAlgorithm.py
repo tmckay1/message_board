@@ -8,8 +8,8 @@ class RainbowColorAlgorithm(ColorAlgorithm):
 
     def getColor(self,led,x,y,step):
 
-        #    modifiedValue = (step + x) % 255
         modifiedValue = (step) % 255
         color = colors.hue2rgb(modifiedValue)
             
         return color
+                

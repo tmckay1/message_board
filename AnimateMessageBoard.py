@@ -1,15 +1,13 @@
 from bibliopixel.layout import *
+from messageBoard.animations.MessageBoardAnimation      import MessageBoardAnimation # import the animation
+from messageBoard.characters.MessageCharacters5x3       import MessageCharacters5x3  # import the character set
+from messageBoard.algorithms.RainbowColorAlgorithm      import RainbowColorAlgorithm # import color algorithm
+from messageBoard.algorithms.ScrollLeftMessageAlgorithm import ScrollLeftMessageAlgorithm # import message algorithm
+from messageBoard.parsers.StandardMessageParser         import StandardMessageParser # import the parser
 from bibliopixel.drivers.PiWS281X import *
-from bibliopixel.layout import Rotation
-from messageBoard.animations.MessageBoardAnimation import MessageBoardAnimation
-from messageBoard.parsers.MessageParser import MessageParser
-from messageBoard.characters.MessageCharacters5x3 import MessageCharacters5x3
-from messageBoard.algorithms.message.ScrollLeftMessageAlgorithm import ScrollLeftMessageAlgorithm
-from messageBoard.algorithms.color.RainbowColorAlgorithm import RainbowColorAlgorithm
-import time
 import sys
 
-#get message
+#get message from command line
 if(len(sys.argv) !=2):
     print("Only insert 1 command line argument that is the message to display")
     exit(1)
@@ -26,15 +24,16 @@ brightness = 100     # brightness 0-255
 driver     = PiWS281X(47*5)
 led        = Matrix(driver, width, height, coordMap, Rotation.ROTATE_0, vert_flip, serpentine, thread, brightness)
 
-#create binary word to display from character set
-characters = MessageCharacters5x3()
-parser     = MessageParser(message, characters)
-binaryWord = parser.getMessageList()
-#parser.printMessage()
+# get word
+characterSet  = MessageCharacters5x3()
+messageParser = StandardMessageParser(message,characterSet)
+word          = messageParser.getMessageMatrix()
+
+# get algorithms
+colorAlgorithm   = RainbowColorAlgorithm()
+messageAlgorithm = ScrollLeftMessageAlgorithm(colorAlgorithm)
 
 #run animation
-delay      = .15 
-mAlgorithm = ScrollLeftMessageAlgorithm()
-cAlgorithm = RainbowColorAlgorithm()
-anim       = MessageBoardAnimation(led,binaryWord,mAlgorithm,cAlgorithm,delay)
+delay = .15 
+anim  = MessageBoardAnimation(led,word,messageAlgorithm,delay)
 anim.run()
