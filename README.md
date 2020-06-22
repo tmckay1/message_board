@@ -1,5 +1,5 @@
 # message_board
-This program is used to light up a message board powered by a Raspberry Pi 3. The hardware setup is described <a href="http://www.thetylermckay.com/rpi/overview/">here</a>. For a full in-depth description of how this program was designed, go <a href="http://www.thetylermckay.com/rpi/message-board-programming">here</a>.`
+This program is used to light up a message board powered by a Raspberry Pi 3.
 
 ## Assumptions
 When writing this program I assumed:
@@ -13,7 +13,7 @@ In order to use the program you will need the following:
 - <a href="https://github.com/ManiacalLabs/BiblioPixel">BiblioPixel</a> Installed (any any dependency it requires)
 
 ## Setup
-You can clone/download the project to any directory you want to keep the files. The file <code>animateMessageBoard.py</code> is a sample script that executes the program. You can follow this as a template for writing you're own implementation. All animations, algorithms, character sets, and parsers can be subclassed to fit the needs of your specific setup. For example if you are using an 8x48 message board, you will need to create a character set for that. For details on the whole project start <a href="http://www.thetylermckay.com/rpi/overview/">here</a>.
+You can clone/download the project to any directory you want to keep the files. The file <code>animateMessageBoard.py</code> is a sample script that executes the program. You can follow this as a template for writing you're own implementation. All animations, algorithms, character sets, and parsers can be subclassed to fit the needs of your specific setup. For example if you are using an 8x48 message board, you will need to create a character set for that.
 
 ## How It Works
 Here's the basic idea for writing a message to your board:
