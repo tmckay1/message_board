@@ -21,7 +21,7 @@ coordMap   = None    # coordinate mapping array
 width      = 47      # width of board
 height     = 5       # height of board
 brightness = 100     # brightness 0-255
-driver     = PiWS281X(47*5)
+driver     = PiWS281X(height*width)
 led        = Matrix(driver, width, height, coordMap, Rotation.ROTATE_0, vert_flip, serpentine, thread, brightness)
 
 # get word
