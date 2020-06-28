@@ -17,9 +17,9 @@ message = sys.argv[1]
 #create biblio pixel driver and led
 vert_flip  = False   # flip across x-axis
 y_flip     = False   # flip across y-axis
-serpentine = False   # serpentine pattern
+serpentine = True    # serpentine pattern
 thread     = False   # display updates to run in background thread
-width      = 47      # width of board
+width      = 58      # width of board
 height     = 5       # height of board
 brightness = 100     # brightness 0-255
 driver     = PiWS281X(height*width)
